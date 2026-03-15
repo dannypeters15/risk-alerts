@@ -115,6 +115,13 @@ def risk_zone(r):
     if r < 0.85: return "🟠 CAUTION"
     return "🔴 EXTREME"
 
+def risk_zone_plain(r):
+    """Emoji-free version for push notifications."""
+    if r < 0.35: return "ACCUMULATE"
+    if r < 0.65: return "NEUTRAL"
+    if r < 0.85: return "CAUTION"
+    return "EXTREME"
+
 
 # ── Notifications ──────────────────────────────────────────────────────────────
 
@@ -147,9 +154,10 @@ def send_push(title, message, priority="default"):
             f"https://ntfy.sh/{NTFY_TOPIC}",
             data=data,
             headers={
-                "Title": title,
+                "Title": title.encode("utf-8").decode("latin-1", errors="replace"),
                 "Priority": priority,
                 "Tags": "chart_with_upwards_trend",
+                "Content-Type": "text/plain; charset=utf-8",
             },
             method="POST"
         )
@@ -246,8 +254,8 @@ Sent by your Risk Alert System
 
     for a in alerts:
         send_push(
-            title=f"🚨 {a['ticker']} Buy Zone!",
-            message=f"Risk: {a['risk']:.3f} | Price: ${a['price']:.2f} | FV: ${a['fair_value']:.2f} ({a['deviation']*100:+.1f}%) — {a['zone']}",
+            title=f"ALERT: {a['ticker']} Buy Zone!",
+            message=f"Risk: {a['risk']:.3f} | Price: ${a['price']:.2f} | FV: ${a['fair_value']:.2f} ({a['deviation']*100:+.1f}%) - {risk_zone_plain(a['risk'])}",
             priority="high"
         )
 
@@ -268,9 +276,9 @@ Sent by your Risk Alert System
     send_email(subject, html_body, text_body)
 
     # Push summary — one line per ticker
-    lines = [f"{r['ticker']}: {r['risk']:.3f} {r['zone']}" for r in results]
+    lines = [f"{r['ticker']}: {r['risk']:.3f} {risk_zone_plain(r['risk'])}" for r in results]
     send_push(
-        title=f"📊 Daily Risk Summary — {today}",
+        title=f"Daily Risk Summary - {today}",
         message="\n".join(lines) + f"\nThreshold: {ALERT_THRESHOLD}",
         priority="default"
     )
