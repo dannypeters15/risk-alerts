@@ -253,7 +253,7 @@ Sent by your Risk Alert System
 
 
 def _send_daily_summary(results, today):
-    """Send a daily summary email even when no alerts fire."""
+    """Send a daily summary email + push even when no alerts fire."""
     subject = f"📊 Daily Risk Summary — {today}"
     text_body = f"""Daily Risk Summary — {today}
 
@@ -266,6 +266,14 @@ Sent by your Risk Alert System
 """
     html_body = _build_html_email([], results, today, is_alert=False)
     send_email(subject, html_body, text_body)
+
+    # Push summary — one line per ticker
+    lines = [f"{r['ticker']}: {r['risk']:.3f} {r['zone']}" for r in results]
+    send_push(
+        title=f"📊 Daily Risk Summary — {today}",
+        message="\n".join(lines) + f"\nThreshold: {ALERT_THRESHOLD}",
+        priority="default"
+    )
 
 
 def _text_summary_table(results):
