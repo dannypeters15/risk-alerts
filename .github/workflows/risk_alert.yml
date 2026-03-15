@@ -1,0 +1,28 @@
+name: Daily Risk Alert
+
+on:
+  schedule:
+    # Runs at 10:00 PM UK time (22:00 UTC) every weekday — after US market close
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch:  # allows you to trigger it manually from GitHub
+
+jobs:
+  risk-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run risk check
+        env:
+          GMAIL_USER:     ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASS: ${{ secrets.GMAIL_APP_PASS }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          NTFY_TOPIC:     ${{ secrets.NTFY_TOPIC }}
+        run: python check_risk.py
