@@ -355,7 +355,7 @@ All stocks currently in zone ({len(zone_alerts)} total):
 —
 Portfolio Risk Alert System
 """
-    html_body = _build_html_email(new_alerts, zone_alerts, all_results, today, is_alert=True)
+    html_body = _build_html_email(alerts=new_alerts, zone_alerts=zone_alerts, all_results=all_results, today=today, is_alert=True)
     send_email(subject, html_body, text_body)
 
     # Individual push per new entry (high priority)
@@ -404,7 +404,7 @@ Full Portfolio:
 —
 Portfolio Risk Alert System
 """
-    html_body = _build_html_email([], results, today, is_alert=False, zone_alerts=zone_alerts)
+    html_body = _build_html_email(alerts=[], zone_alerts=zone_alerts, all_results=results, today=today, is_alert=False)
     send_email(subject, html_body, text_body)
 
     # Push: list all stocks in zone
@@ -445,7 +445,7 @@ def _risk_color(risk):
     return "#ef4444"
 
 
-def _build_html_email(alerts, all_results, today, is_alert, zone_alerts=None):
+def _build_html_email(alerts, all_results=None, today=None, is_alert=False, zone_alerts=None):
     alert_banner = ""
     if is_alert and alerts:
         tickers = ", ".join(a["ticker"] for a in alerts)
