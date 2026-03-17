@@ -6,6 +6,9 @@ on:
     - cron: '0 22 * * 1-5'
   workflow_dispatch:  # allows you to trigger it manually from GitHub
 
+permissions:
+  contents: write
+
 jobs:
   risk-check:
     runs-on: ubuntu-latest
@@ -26,3 +29,11 @@ jobs:
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
           NTFY_TOPIC:     ${{ secrets.NTFY_TOPIC }}
         run: python check_risk.py
+
+      - name: Save alert state
+        run: |
+          git config user.name "Risk Alert Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add alert_state.json || true
+          git diff --cached --quiet || git commit -m "state: update alert zone $(date -u +%Y-%m-%d)"
+          git push || true

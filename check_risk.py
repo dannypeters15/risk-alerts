@@ -22,16 +22,72 @@ ALERT_THRESHOLD = 0.35  # Change this to whatever you decide
 # Your watchlist: add as many tickers as you like
 # Format: { "TICKER": { "name": "Full Name", "inception": "YYYY-MM-DD", "allocation_pct": X } }
 WATCHLIST = {
-    "URA": {
-        "name": "Global X Uranium ETF",
-        "inception": "2010-11-04",
-        "allocation_pct": 50,   # your target % of portfolio
-    },
-    "MSFT": {
-        "name": "Microsoft Corporation",
-        "inception": "1986-03-13",
-        "allocation_pct": 50,
-    },
+    # ── Mega Cap Tech ──────────────────────────────────────────────
+    "MSFT":   {"name": "Microsoft",              "inception": "1986-03-13", "allocation_pct": 3},
+    "AMZN":   {"name": "Amazon",                 "inception": "1997-05-15", "allocation_pct": 3},
+    "NVDA":   {"name": "Nvidia",                 "inception": "1999-01-22", "allocation_pct": 3},
+    "META":   {"name": "Meta Platforms",         "inception": "2012-05-18", "allocation_pct": 3},
+    "AAPL":   {"name": "Apple",                  "inception": "1980-12-12", "allocation_pct": 3},
+    "GOOG":   {"name": "Alphabet",               "inception": "2004-08-19", "allocation_pct": 3},
+    "IBM":    {"name": "IBM",                    "inception": "1962-01-02", "allocation_pct": 2},
+    "ADBE":   {"name": "Adobe",                  "inception": "1986-08-13", "allocation_pct": 2},
+    # ── Software / Cloud ───────────────────────────────────────────
+    "ORCL":   {"name": "Oracle",                 "inception": "1986-03-12", "allocation_pct": 2},
+    "PLTR":   {"name": "Palantir",               "inception": "2020-09-30", "allocation_pct": 2},
+    "SHOP":   {"name": "Shopify",                "inception": "2015-05-21", "allocation_pct": 2},
+    "PATH":   {"name": "UiPath",                 "inception": "2021-04-21", "allocation_pct": 2},
+    "CSCO":   {"name": "Cisco",                  "inception": "1990-02-16", "allocation_pct": 2},
+    # ── Semiconductors ────────────────────────────────────────────
+    "AVGO":   {"name": "Broadcom",               "inception": "2009-08-06", "allocation_pct": 2},
+    "AMD":    {"name": "AMD",                    "inception": "1972-09-27", "allocation_pct": 2},
+    "INTC":   {"name": "Intel",                  "inception": "1971-10-13", "allocation_pct": 2},
+    # ── Consumer / Streaming ──────────────────────────────────────
+    "NFLX":   {"name": "Netflix",                "inception": "2002-05-23", "allocation_pct": 2},
+    "SPOT":   {"name": "Spotify",                "inception": "2018-04-03", "allocation_pct": 2},
+    "TSLA":   {"name": "Tesla",                  "inception": "2010-06-29", "allocation_pct": 2},
+    "COST":   {"name": "Costco",                 "inception": "1985-12-05", "allocation_pct": 2},
+    "WMT":    {"name": "Walmart",                "inception": "1972-08-25", "allocation_pct": 2},
+    "TGT":    {"name": "Target",                 "inception": "1967-01-03", "allocation_pct": 2},
+    "BABA":   {"name": "Alibaba",                "inception": "2014-09-19", "allocation_pct": 2},
+    "SONY":   {"name": "Sony Group",             "inception": "1970-09-01", "allocation_pct": 2},
+    "TTWO":   {"name": "Take-Two Interactive",   "inception": "1993-09-24", "allocation_pct": 2},
+    # ── Financials ────────────────────────────────────────────────
+    "JPM":    {"name": "JPMorgan Chase",         "inception": "1969-01-02", "allocation_pct": 2},
+    "BRK-B":  {"name": "Berkshire Hathaway B",   "inception": "1996-05-09", "allocation_pct": 2},
+    "BLK":    {"name": "BlackRock",              "inception": "1999-10-01", "allocation_pct": 2},
+    "HOOD":   {"name": "Robinhood",              "inception": "2021-07-29", "allocation_pct": 2},
+    "IFC.TO": {"name": "Intact Financial",       "inception": "2004-02-12", "allocation_pct": 2},
+    # ── Telecom ───────────────────────────────────────────────────
+    "TMUS":   {"name": "T-Mobile US",            "inception": "2013-05-01", "allocation_pct": 2},
+    # ── Energy ────────────────────────────────────────────────────
+    "CVX":    {"name": "Chevron",                "inception": "1970-01-02", "allocation_pct": 2},
+    "DVN":    {"name": "Devon Energy",           "inception": "1988-01-04", "allocation_pct": 2},
+    # ── Uranium / Nuclear ─────────────────────────────────────────
+    "URA":    {"name": "Global X Uranium ETF",   "inception": "2010-11-04", "allocation_pct": 2},
+    "UEC":    {"name": "Uranium Energy Corp",    "inception": "2007-01-03", "allocation_pct": 2},
+    "CCO.TO": {"name": "Cameco",                 "inception": "1991-01-02", "allocation_pct": 2},
+    "UUUU":   {"name": "Energy Fuels",           "inception": "2012-01-03", "allocation_pct": 2},
+    # ── Rare Earth / Materials ────────────────────────────────────
+    "MP":     {"name": "MP Materials",           "inception": "2020-11-17", "allocation_pct": 2},
+    "USAR":   {"name": "USA Rare Earth",         "inception": "2024-01-02", "allocation_pct": 2},
+    "ALB":    {"name": "Albemarle",              "inception": "1994-02-28", "allocation_pct": 2},
+    "LAC":    {"name": "Lithium Americas",       "inception": "2020-09-01", "allocation_pct": 2},
+    "AG":     {"name": "First Majestic Silver",  "inception": "2011-05-10", "allocation_pct": 2},
+    # ── Crypto / Bitcoin Mining ───────────────────────────────────
+    "MSTR":   {"name": "MicroStrategy",          "inception": "1998-06-11", "allocation_pct": 2},
+    "IREN":   {"name": "Iris Energy",            "inception": "2021-11-18", "allocation_pct": 2},
+    "BMNR":   {"name": "Bitmine Immersion",      "inception": "2022-06-01", "allocation_pct": 2},
+    "APLD":   {"name": "Applied Digital",        "inception": "2022-04-01", "allocation_pct": 2},
+    # ── Defence / Industrial ──────────────────────────────────────
+    "AVAV":   {"name": "AeroVironment",          "inception": "2007-01-26", "allocation_pct": 2},
+    "RR.L":   {"name": "Rolls-Royce",            "inception": "1987-01-01", "allocation_pct": 2},
+    # ── EV / Mobility ─────────────────────────────────────────────
+    "XPEV":   {"name": "XPeng",                  "inception": "2020-08-27", "allocation_pct": 2},
+    "RIVN":   {"name": "Rivian",                 "inception": "2021-11-10", "allocation_pct": 2},
+    # ── Emerging / Small Cap ──────────────────────────────────────
+    "ONDS":   {"name": "Ondas Holdings",         "inception": "2018-01-02", "allocation_pct": 1},
+    "SRFM":   {"name": "Surf Air Mobility",      "inception": "2023-07-27", "allocation_pct": 1},
+    "CCO":    {"name": "Clear Channel Outdoor",  "inception": "2005-11-11", "allocation_pct": 1},
 }
 
 # Notification settings (injected via GitHub Secrets)
@@ -169,6 +225,26 @@ def send_push(title, message, priority="default"):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
+# ── State file for tracking which tickers were already in alert zone ──────────
+STATE_FILE = "alert_state.json"
+
+def load_state():
+    """Load previous run's alert state."""
+    try:
+        with open(STATE_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {"in_zone": []}
+
+def save_state(in_zone_tickers):
+    """Save current alert state for next run."""
+    try:
+        with open(STATE_FILE, "w") as f:
+            json.dump({"in_zone": in_zone_tickers, "updated": str(date.today())}, f)
+    except Exception as e:
+        print(f"  ⚠ Could not save state: {e}")
+
+
 def main():
     today = date.today()
     print(f"\n{'='*60}")
@@ -176,27 +252,33 @@ def main():
     print(f"Threshold: {ALERT_THRESHOLD}")
     print(f"{'='*60}\n")
 
-    results = []
-    alerts  = []
+    # Load previous state to detect NEW entries into accumulate zone
+    prev_state   = load_state()
+    prev_in_zone = set(prev_state.get("in_zone", []))
+
+    results      = []
+    alerts       = []   # ALL stocks currently in zone (for daily summary)
+    new_alerts   = []   # stocks that NEWLY entered the zone today
 
     for ticker, cfg in WATCHLIST.items():
         print(f"Checking {ticker} ({cfg['name']})...")
         history = fetch_history(ticker)
 
         if not history:
-            print(f"  ⚠️  No data returned for {ticker}\n")
+            print(f"  ⚠  No data returned for {ticker}\n")
             continue
 
         price, risk, fair_value, deviation = calculate_risk(history, cfg["inception"])
 
         if risk is None:
-            print(f"  ⚠️  Insufficient data for {ticker}\n")
+            print(f"  ⚠  Insufficient data for {ticker}\n")
             continue
 
-        zone = risk_zone(risk)
-        dev_pct = deviation * 100
+        zone    = risk_zone(risk)
+        dev_pct = deviation * 100 if deviation is not None else 0
         print(f"  Price:      ${price:.2f}")
-        print(f"  Fair Value: ${fair_value:.2f}  ({dev_pct:+.1f}%)")
+        if fair_value:
+            print(f"  Fair Value: ${fair_value:.2f}  ({dev_pct:+.1f}%)")
         print(f"  Risk:       {risk:.3f}  {zone}")
         print(f"  Allocation: {cfg['allocation_pct']}% of portfolio\n")
 
@@ -214,74 +296,136 @@ def main():
 
         if risk <= ALERT_THRESHOLD:
             alerts.append(result)
-            print(f"  🚨 ALERT: {ticker} risk {risk:.3f} is at or below threshold {ALERT_THRESHOLD}\n")
+            # Only trigger urgent notification if this is NEW to the zone
+            if ticker not in prev_in_zone:
+                new_alerts.append(result)
+                print(f"  🚨 NEW ENTRY: {ticker} just entered accumulate zone at {risk:.3f}\n")
+            else:
+                print(f"  ✅ Still in zone: {ticker} {risk:.3f}\n")
 
-    # ── Build and send notifications ──────────────────────────────────────────
+    # Sort alerts by risk (lowest/cheapest first)
+    alerts.sort(key=lambda x: x["risk"])
+    new_alerts.sort(key=lambda x: x["risk"])
 
-    if alerts:
-        _send_alert_notifications(alerts, results, today)
-    else:
-        print("No tickers in alert zone today.")
-        _send_daily_summary(results, today)
+    # Save new state
+    save_state([r["ticker"] for r in alerts])
+
+    print(f"\n── Summary ──────────────────────────────────────────────")
+    print(f"In accumulate zone: {len(alerts)} stocks")
+    print(f"Newly entered zone: {len(new_alerts)} stocks")
+
+    # ── Notifications ─────────────────────────────────────────────────────────
+    if new_alerts:
+        # Urgent push + email for newly entered stocks
+        print("\nSending NEW ENTRY alert notifications...")
+        _send_alert_notifications(new_alerts, alerts, results, today, is_new=True)
+
+    # Always send daily summary email with full zone status
+    print("\nSending daily summary...")
+    _send_daily_summary(results, alerts, today)
 
 
-def _send_alert_notifications(alerts, all_results, today):
+def _send_alert_notifications(new_alerts, zone_alerts, all_results, today, is_new=True):
+    """Send urgent notification for stocks newly entering the accumulate zone."""
+    tickers_str = ", ".join(a["ticker"] for a in new_alerts)
+    subject = f"🚨 NEW Buy Zone Entry: {tickers_str} — {today}"
+
     alert_lines = "\n".join(
-        f"• {a['ticker']} ({a['name']}): Risk {a['risk']:.3f} {a['zone']} | "
-        f"Price ${a['price']:.2f} | Fair Value ${a['fair_value']:.2f} ({a['deviation']*100:+.1f}%) | "
-        f"Allocation {a['allocation']}%"
-        for a in alerts
+        f"• {a['ticker']} ({a['name']}): Risk {a['risk']:.3f} | "
+        f"Price ${a['price']:.2f}" +
+        (f" | FV ${a['fair_value']:.2f} ({a['deviation']*100:+.1f}%)" if a['fair_value'] else "") +
+        f" | Alloc {a['allocation']}%"
+        for a in new_alerts
     )
 
-    subject = f"🚨 Risk Alert: {', '.join(a['ticker'] for a in alerts)} in Buy Zone — {today}"
+    currently_in = "\n".join(
+        f"  {a['ticker']}: {a['risk']:.3f} — ${a['price']:.2f}"
+        for a in zone_alerts
+    ) or "  None"
 
-    text_body = f"""Risk Alert — {today}
+    text_body = f"""🚨 New Buy Zone Entry — {today}
 
-The following stocks have entered the ACCUMULATE zone (risk ≤ {ALERT_THRESHOLD}):
+{len(new_alerts)} stock(s) just entered the ACCUMULATE zone (risk <= {ALERT_THRESHOLD}):
 
 {alert_lines}
 
-Full Portfolio Status:
-{_text_summary_table(all_results)}
+All stocks currently in zone ({len(zone_alerts)} total):
+{currently_in}
 
 —
-Sent by your Risk Alert System
+Portfolio Risk Alert System
 """
-
-    html_body = _build_html_email(alerts, all_results, today, is_alert=True)
-
+    html_body = _build_html_email(new_alerts, zone_alerts, all_results, today, is_alert=True)
     send_email(subject, html_body, text_body)
 
-    for a in alerts:
+    # Individual push per new entry (high priority)
+    for a in new_alerts:
+        fv_str = f" | FV ${a['fair_value']:.2f}" if a['fair_value'] else ""
         send_push(
-            title=f"ALERT: {a['ticker']} Buy Zone!",
-            message=f"Risk: {a['risk']:.3f} | Price: ${a['price']:.2f} | FV: ${a['fair_value']:.2f} ({a['deviation']*100:+.1f}%) - {risk_zone_plain(a['risk'])}",
-            priority="high"
+            title=f"NEW BUY ZONE: {a['ticker']}",
+            message=f"Risk: {a['risk']:.3f} | ${a['price']:.2f}{fv_str} | {risk_zone_plain(a['risk'])}",
+            priority="urgent"
         )
 
+    # One summary push for full zone list
+    if len(zone_alerts) > len(new_alerts):
+        others = [a for a in zone_alerts if a["ticker"] not in [n["ticker"] for n in new_alerts]]
+        if others:
+            send_push(
+                title=f"Also in zone: {', '.join(a['ticker'] for a in others[:5])}",
+                message="\n".join(f"{a['ticker']}: {a['risk']:.3f}" for a in others[:8]),
+                priority="default"
+            )
 
-def _send_daily_summary(results, today):
-    """Send a daily summary email + push even when no alerts fire."""
-    subject = f"📊 Daily Risk Summary — {today}"
+
+def _send_daily_summary(results, zone_alerts, today):
+    """Send daily summary email + push with full zone status."""
+    in_zone_count = len(zone_alerts)
+    subject = (
+        f"🟢 {in_zone_count} stock(s) in buy zone — {today}"
+        if in_zone_count > 0
+        else f"📊 Daily Risk Summary — {today} — no stocks in buy zone"
+    )
+
+    zone_lines = "\n".join(
+        f"  {a['ticker']}: {a['risk']:.3f} — ${a['price']:.2f}"
+        for a in zone_alerts
+    ) or "  None currently"
+
     text_body = f"""Daily Risk Summary — {today}
+Threshold: {ALERT_THRESHOLD}
 
-No tickers in alert zone today (threshold: {ALERT_THRESHOLD})
+Stocks in Accumulate Zone ({in_zone_count}):
+{zone_lines}
 
+Full Portfolio:
 {_text_summary_table(results)}
 
 —
-Sent by your Risk Alert System
+Portfolio Risk Alert System
 """
-    html_body = _build_html_email([], results, today, is_alert=False)
+    html_body = _build_html_email([], results, today, is_alert=False, zone_alerts=zone_alerts)
     send_email(subject, html_body, text_body)
 
-    # Push summary — one line per ticker
-    lines = [f"{r['ticker']}: {r['risk']:.3f} {risk_zone_plain(r['risk'])}" for r in results]
-    send_push(
-        title=f"Daily Risk Summary - {today}",
-        message="\n".join(lines) + f"\nThreshold: {ALERT_THRESHOLD}",
-        priority="default"
-    )
+    # Push: list all stocks in zone
+    if zone_alerts:
+        lines = [f"{a['ticker']}: {a['risk']:.3f}" for a in zone_alerts]
+        send_push(
+            title=f"Daily Summary: {in_zone_count} in buy zone",
+            message="In zone: " + ", ".join(a["ticker"] for a in zone_alerts) +
+                    f"\nThreshold: {ALERT_THRESHOLD}",
+            priority="default"
+        )
+    else:
+        # Still send a daily push so you know the system ran
+        send_push(
+            title=f"Daily Summary - {today}",
+            message=f"No stocks below {ALERT_THRESHOLD} today. Lowest: " +
+                    min(results, key=lambda x: x["risk"])["ticker"] + " " +
+                    f"{min(results, key=lambda x: x['risk'])['risk']:.3f}"
+                    if results else "No data",
+            priority="min"
+        )
 
 
 def _text_summary_table(results):
@@ -301,13 +445,19 @@ def _risk_color(risk):
     return "#ef4444"
 
 
-def _build_html_email(alerts, all_results, today, is_alert):
+def _build_html_email(alerts, all_results, today, is_alert, zone_alerts=None):
     alert_banner = ""
-    if is_alert:
+    if is_alert and alerts:
         tickers = ", ".join(a["ticker"] for a in alerts)
         alert_banner = f"""
         <div style="background:#ef4444;color:#fff;padding:16px 24px;border-radius:6px;margin-bottom:24px;font-size:18px;font-weight:bold;">
-            🚨 {tickers} — Risk below {ALERT_THRESHOLD} (Accumulate Zone)
+            🚨 NEW BUY ZONE: {tickers}
+        </div>"""
+    elif zone_alerts:
+        tickers = ", ".join(a["ticker"] for a in zone_alerts)
+        alert_banner = f"""
+        <div style="background:#16a34a;color:#fff;padding:12px 24px;border-radius:6px;margin-bottom:24px;font-size:15px;font-weight:bold;">
+            🟢 Currently in buy zone: {tickers}
         </div>"""
 
     rows = ""
