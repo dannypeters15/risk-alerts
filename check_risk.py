@@ -88,6 +88,7 @@ WATCHLIST = {
     "ONDS":   {"name": "Ondas Holdings",         "inception": "2018-01-02", "allocation_pct": 1},
     "SRFM":   {"name": "Surf Air Mobility",      "inception": "2023-07-27", "allocation_pct": 1},
     "CCO":    {"name": "Clear Channel Outdoor",  "inception": "2005-11-11", "allocation_pct": 1},
+    "MGY":    {"name": "Magnolia Oil & Gas",      "inception": "2018-07-19", "allocation_pct": 2},
 }
 
 # Notification settings (injected via GitHub Secrets)
